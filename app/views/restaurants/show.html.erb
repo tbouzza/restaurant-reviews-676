@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Edit restaurant', edit_restaurant_path(@restaurant), class: 'btn btn-warning' %>
 <p>
   <strong>Name:</strong>
   <%= @restaurant.name %>
@@ -15,5 +16,30 @@
   <%= @restaurant.stars %>
 </p>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<p>
+  <strong>Chef:</strong>
+  <%= link_to @restaurant.chef, chef_restaurant_path(@restaurant) %>
+</p>
+
+
+<h2>Reviews</h2>
+
+<%= link_to "Add Review", new_restaurant_review_path(@restaurant), class: 'btn btn-primary' %>
+
+<ul class="list-group mt-5">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item d-flex justify-content-between">
+      <%= review.content %>
+      <div>
+        <%= link_to 'Edit', edit_review_path(review), class: 'btn btn-secondary' %>
+        <%= link_to 'Delete',
+                    review_path(review),
+                    method: :delete,
+                    class: 'btn btn-danger',
+                    data: { confirm: 'Are you sure ?'} %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
 <%= link_to 'Back', restaurants_path %>

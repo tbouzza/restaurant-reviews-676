@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Restaurants</h1>
+<h1>Top Restaurants</h1>
 
 <table>
   <thead>
@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @restaurants.each do |restaurant| %>
+    <% @top_restaurants.each do |restaurant| %>
       <tr>
         <td><%= restaurant.name %></td>
         <td><%= restaurant.address %></td>
@@ -28,5 +28,5 @@
 
 <br>
 
-<%= link_to 'New Restaurant', new_restaurant_path %>
-<%= link_to 'Top Restaurant', top_restaurants_path %>
+<%= link_to 'Back', restaurants_path, class: 'btn btn-primary' %>
+
